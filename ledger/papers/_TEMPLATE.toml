@@ -1,0 +1,17 @@
+# Copy this file to ledger/papers/<paper-slug>.toml (same slug as the paper's folder),
+# fill it in, then rebuild the ledger:  python ledger/build.py
+# Files whose name starts with "_" are ignored.
+
+[paper]
+title = "Full paper title"
+arxiv = "2601.00000"                 # arXiv id, no version suffix
+folder = "paper-slug"                # reproduction folder at the repo root
+pr = 0                               # pull request number in this repo
+tested = 2026-01-01                  # date the result was produced (TOML date, no quotes)
+setup = "Model, task, scale; what differs from the paper (seeds, steps, data)."
+
+# One [[claims]] block per claim we tested, in the order they should appear.
+[[claims]]
+claim = "What the paper claims, with its numbers."
+verdict = "held"                     # one of: held, partly, did-not-hold
+evidence = "Our number(s), seeds in direction, p-value; one or two sentences."

@@ -1,0 +1,27 @@
+[paper]
+title = "The Winner's Curse in LLM Self-Improvement Loops"
+arxiv = "2610.09239"
+folder = "winners-curse"
+pr = 1
+tested = 2026-11-25
+setup = "Qwen2.5-1.5B-Instruct (Q8_0, llama.cpp, CPU) as solver and proposer; TREC-50, greedy keep-if-better, K=4, nested selection sets n=16/64/256, 600-item held-out gold set; 4 seeds and 10 generations (paper: 8 and 20)."
+
+[[claims]]
+claim = "Selection score beats held-out accuracy by 1–5 points with 256 selection items."
+verdict = "held"
+evidence = "+4.0 ± 2.1 points at n=256, inside the paper's range."
+
+[[claims]]
+claim = "Selection score beats held-out accuracy by 13–20 points with 16 selection items."
+verdict = "partly"
+evidence = "+24.8 ± 2.2 points, above the range. About 14.5 points were there before any selection (lucky 16-item draws); the loop itself added +10.2 ± 3.8."
+
+[[claims]]
+claim = "The gap shrinks as the selection set grows (gap at 16 minus gap at 256: +15.9 ± 2.7, 8/8 seeds)."
+verdict = "held"
+evidence = "+20.7 ± 3.8 points, 4/4 seeds, p = 0.012."
+
+[[claims]]
+claim = "A larger selection set gives a larger held-out gain (24.2 vs 13.7 points at n=256 vs 16)."
+verdict = "partly"
+evidence = "Direction only: +11.8 vs +5.4 points, 4/4 seeds, p = 0.083; smaller than the paper's, likely from 10 instead of 20 generations."
